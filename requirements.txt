@@ -1,2 +1,12 @@
 PyQt6
 PyQt6-WebEngine
+logging
+datetime
+requests
+numpy
+pandas
+matplotlib
+scipy
+scikit-learn
+seaborn
+sqlalchemy
