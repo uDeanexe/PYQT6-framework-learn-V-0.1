@@ -1,38 +1,57 @@
-# My Framework Dasar untuk PyQt6 Free
+# Proton App Framework (PyQt6 + HTML/JS)
 
-Ini adalah framework dasar untuk membuat aplikasi desktop menggunakan Python (PyQt6) sebagai backend dan HTML/JS sebagai frontend (UI).
+This is a lightweight framework for building desktop applications using Python (PyQt6) for the backend and HTML/CSS/JavaScript for the frontend (UI). It leverages `QWebEngineView` to render the UI and `QWebChannel` for seamless bidirectional communication.
 
-## Struktur Project
+## Project Structure
 
-- `src/main.py`: Entry point aplikasi (Window utama & konfigurasi WebEngine).
-- `src/Controllers/Bridge.py`: Jembatan komunikasi antara Python dan JavaScript.
-- `src/UI/`: Folder berisi file antarmuka (HTML, CSS, JS).
+- **`src/main.py`**: The application entry point. It initializes the `QApplication`, sets up remote debugging, and launches the main window.
+- **`src/Controllers/Core.py`**: Contains the core logic for the main window (`MainWindow`) and the custom browser view (`ProtonView`). It handles:
+    - Loading the HTML UI.
+    - Setting up the `QWebChannel`.
+    - Customizing the context menu (right-click behavior).
+    - Managing persistent storage and developer tool settings.
+- **`src/Controllers/Bridge.py`**: The communication bridge between Python and JavaScript. It defines:
+    - **Slots**: Functions callable from JavaScript (e.g., `log_to_python`, `process_data`).
+    - **Signals**: Events sent from Python to JavaScript (e.g., `dataProcessed`, `counterChanged`).
+    - **Properties**: Shared state variables (e.g., `counter`).
+- **`src/UI/`**: Directory containing the frontend assets (HTML, CSS, JS).
 
-## Persyaratan (Requirements)
+## Requirements
 
-- Python 3.8 atau lebih baru.
+- Python 3.8 or newer.
+- PyQt6 and PyQt6-WebEngine.
 
-## Cara Install (Installation)
+## Installation & Setup (Download & Import)
 
-1.  **Clone atau Download** repository ini ke komputer Anda.
-2.  Buka terminal (Command Prompt atau PowerShell) dan arahkan ke folder project:
+1.  **Download Source Code**:
+    - Clone this repository or download the ZIP file and extract it to your local machine.
+
+2.  **Import to Text Editor/IDE**:
+    - Open the `ProtonFramework` folder using Visual Studio Code, PyCharm, or your favorite editor.
+
+3.  **Navigate to Project Directory**:
+    - Open a terminal (Command Prompt or PowerShell).
+    - Navigate to the project directory:
     ```bash
-    cd d:\python\ProjectT
+    cd d:\python\ProtonFramework
     ```
-3.  **Install Dependencies** menggunakan `pip` dan file `requirements.txt` yang telah disediakan:
+
+4.  **Install Dependencies**:
+    - Install the required Python libraries:
     ```bash
-    pip install -r requirements.txt
+    pip install PyQt6 PyQt6-WebEngine
     ```
 
-## Cara Menjalankan Aplikasi
+## How to Run
 
-Setelah instalasi selesai, jalankan perintah berikut di terminal:
+After installation, execute the following command in your terminal to start the application:
 
 ```bash
 python src/main.py
 ```
 
 ## Fitur Utama
+
 
 - **Hybrid UI**: Menggunakan teknologi web (HTML5/CSS3) untuk tampilan desktop.
 - **Python Bridge**: Komunikasi dua arah antara Python dan JavaScript (Signal/Slot).
