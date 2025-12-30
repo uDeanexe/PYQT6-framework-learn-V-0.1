@@ -114,7 +114,7 @@ class MainWindow(QMainWindow):
 
         # Load HTML
         current_dir = os.path.dirname(os.path.abspath(__file__))
-        html_path = os.path.join(current_dir, 'UI', 'index.html')
+        html_path = os.path.join(os.path.dirname(current_dir), 'UI', 'index.html')
 
         if os.path.exists(html_path):
             with open(html_path, 'r', encoding='utf-8') as f:
@@ -122,4 +122,5 @@ class MainWindow(QMainWindow):
             base_url = QUrl.fromLocalFile(os.path.dirname(html_path) + '/')
             self.browser.setHtml(html_content, base_url)
         else:
+
             self.browser.setHtml(f"<h1>Error</h1><p>File not found: {html_path}</p>")
